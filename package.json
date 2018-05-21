@@ -1,0 +1,25 @@
+{
+  "name": "koa-learn",
+  "version": "1.0.0",
+  "description": "学习koa",
+  "main": "test.js",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "nodemon": "^1.17.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArrayBuffer/koa-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArrayBuffer/koa-learn/issues"
+  },
+  "homepage": "https://github.com/ArrayBuffer/koa-learn#readme"
+}
