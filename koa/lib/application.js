@@ -60,6 +60,7 @@ module.exports = class Application extends Emitter {
    * @api public
    */
 
+  // 在这里创建一个HTTP服务器，其中的请求处理函数由 this.callback创建
   listen(...args) {
     debug('listen');
     const server = http.createServer(this.callback());
@@ -74,6 +75,7 @@ module.exports = class Application extends Emitter {
    * @api public
    */
 
+  // 返回部分属性值
   toJSON() {
     return only(this, [
       'subdomainOffset',
@@ -89,6 +91,7 @@ module.exports = class Application extends Emitter {
    * @api public
    */
 
+  // 返回部分属性值
   inspect() {
     return this.toJSON();
   }
@@ -103,6 +106,7 @@ module.exports = class Application extends Emitter {
    * @api public
    */
 
+  // 添加中间件
   use(fn) {
     if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
     if (isGeneratorFunction(fn)) {
@@ -124,7 +128,7 @@ module.exports = class Application extends Emitter {
    * @api public
    */
 
-  // 每一次请求都会走 callback返回的函数
+  // 返回一个用于处理请求的回调函数
   callback() {
     const fn = compose(this.middleware);
 
@@ -132,6 +136,7 @@ module.exports = class Application extends Emitter {
 
     // 每一次请求都会走这个函数
     const handleRequest = (req, res) => {
+      // 每次请求都会创建一个 ctx
       const ctx = this.createContext(req, res);
       return this.handleRequest(ctx, fn);
     };
